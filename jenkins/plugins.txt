@@ -1,0 +1,4 @@
+blueocean
+git
+docker-plugin
+workflow-aggregator
