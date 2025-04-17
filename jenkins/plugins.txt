@@ -1,4 +1,4 @@
 blueocean
-git
-docker-plugin
 workflow-aggregator
+git
+github

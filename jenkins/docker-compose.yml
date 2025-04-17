@@ -1,0 +1,15 @@
+services:
+  jenkins:
+    build: .                
+    image: my-jenkins
+    container_name: jenkins     
+    ports:
+      - "8080:8080"              # Jenkins 웹 UI 포트
+      - "50000:50000"            # 에이전트 연결용 포트
+    volumes:
+      - ./jenkins_home:/var/jenkins_home  # Jenkins 데이터
+      - ./plugins.txt:/usr/share/jenkins/ref/plugins.txt:ro  # 플러그인 목록
+      - ./basic-security.groovy:/usr/share/jenkins/ref/init.groovy.d/basic-security.groovy:ro  # 초기 관리자 계정 생성 스크립트
+    user: root                   
+    environment:
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false  # 최초 실행 시 설치 마법사 비활성화
